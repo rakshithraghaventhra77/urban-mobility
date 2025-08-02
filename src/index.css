@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Urban Mobility Dashboard - Permanent Dark Mode Design System */
+
+@layer base {
+  :root {
+    /* Urban Dark Theme - Deep blue/black backgrounds with neon accents */
+    --background: 220 15% 8%;  /* #181B23 */
+    --foreground: 210 40% 98%;
+    
+    --card: 220 15% 12%;  /* Dark glassy cards */
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 220 15% 10%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Neon blue primary */
+    --primary: 195 100% 50%;  /* Bright cyan/blue */
+    --primary-foreground: 220 15% 8%;
+    
+    /* Teal secondary */
+    --secondary: 180 100% 35%;  /* Teal accent */
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Purple accent */
+    --accent: 270 100% 70%;  /* Bright purple */
+    --accent-foreground: 220 15% 8%;
+    
+    /* Muted areas */
+    --muted: 220 15% 15%;
+    --muted-foreground: 210 20% 65%;
+    
+    /* Borders and inputs */
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 195 100% 50%;
+    
+    /* Success/error */
+    --success: 120 100% 40%;
+    --warning: 45 100% 50%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(180 100% 35%));
+    --gradient-secondary: linear-gradient(135deg, hsl(180 100% 35%), hsl(270 100% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%), hsl(220 20% 15%));
+    --gradient-card: linear-gradient(135deg, hsl(220 15% 12% / 0.8), hsl(220 15% 15% / 0.6));
+    
+    /* Shadows for glassy effect */
+    --shadow-glow: 0 0 20px hsl(195 100% 50% / 0.3);
+    --shadow-card: 0 10px 30px hsl(220 15% 5% / 0.5);
+    --shadow-elevated: 0 20px 50px hsl(220 15% 5% / 0.7);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
+    
+    /* Sidebar */
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 220 15% 8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 195 100% 50%;
+    
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glassy card effect */
+  .glass-card {
+    @apply backdrop-blur-lg bg-card/80 border border-border/50 rounded-xl shadow-[var(--shadow-card)];
+  }
+  
+  /* Glowing button effect */
+  .glow-button {
+    @apply relative overflow-hidden rounded-lg transition-all duration-300;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .glow-button:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animated gradient background */
+  .gradient-animated {
+    background: var(--gradient-hero);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+  }
+  
+  /* Neon border effect */
+  .neon-border {
+    border: 1px solid hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3), inset 0 0 10px hsl(var(--primary) / 0.1);
+  }
+  
+  /* Pulse animation for active elements */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes pulseGlow {
+    from { box-shadow: 0 0 5px hsl(var(--primary) / 0.3); }
+    to { box-shadow: 0 0 20px hsl(var(--primary) / 0.8); }
+  }
+  
+  @keyframes slideInUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Animation classes */
+  .animate-slide-up {
+    animation: slideInUp 0.6s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+}
